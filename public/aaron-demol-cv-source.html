@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aaron Demol CV</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      :root {
+        --navy: #22334d;
+        --ink: #1f2a3a;
+        --muted: #566173;
+        --line: #d9dee5;
+        --page: #f5f7fa;
+        --paper: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--page);
+        color: var(--ink);
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      .page {
+        position: relative;
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 auto;
+        overflow: hidden;
+        background: var(--paper);
+      }
+
+      .corner-block {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 44mm;
+        height: 40mm;
+        background: var(--navy);
+      }
+
+      .corner-circle,
+      .corner-circle-bottom {
+        position: absolute;
+        width: 46mm;
+        height: 46mm;
+        border-radius: 999px;
+        background:
+          repeating-linear-gradient(
+            135deg,
+            rgba(34, 51, 77, 0.16) 0,
+            rgba(34, 51, 77, 0.16) 1px,
+            transparent 1px,
+            transparent 4px
+          );
+      }
+
+      .corner-circle {
+        right: -14mm;
+        top: -10mm;
+      }
+
+      .corner-circle-bottom {
+        left: -16mm;
+        bottom: 24mm;
+      }
+
+      .corner-circle-right {
+        position: absolute;
+        right: -18mm;
+        bottom: -10mm;
+        width: 58mm;
+        height: 58mm;
+        border-radius: 999px;
+        background:
+          repeating-linear-gradient(
+            135deg,
+            rgba(34, 51, 77, 0.16) 0,
+            rgba(34, 51, 77, 0.16) 1px,
+            transparent 1px,
+            transparent 4px
+          );
+      }
+
+      .layout {
+        position: relative;
+        display: grid;
+        grid-template-columns: 62mm 1fr;
+        gap: 11mm;
+        padding: 18mm 14mm 14mm 14mm;
+      }
+
+      .sidebar {
+        padding-top: 16mm;
+      }
+
+      .avatar {
+        display: grid;
+        place-items: center;
+        width: 42mm;
+        height: 42mm;
+        margin: 0 auto 8mm;
+        border: 2mm solid var(--navy);
+        border-radius: 999px;
+        background:
+          radial-gradient(circle at 35% 30%, #ffffff 0, #eef2f7 38%, #d9e0ea 100%);
+        color: var(--navy);
+        font-size: 18mm;
+        font-weight: 800;
+        letter-spacing: 1mm;
+      }
+
+      .section-title {
+        margin: 0 0 4mm;
+        padding: 2.2mm 3mm;
+        background: var(--navy);
+        color: #ffffff;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      .left-title {
+        margin: 0 0 3mm;
+        color: var(--ink);
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      .left-copy {
+        margin: 0;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.55;
+        text-align: left;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 3mm;
+        margin-top: 6mm;
+      }
+
+      .contact-item {
+        color: var(--ink);
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .bullet-list {
+        margin: 0;
+        padding-left: 5mm;
+        color: var(--ink);
+        font-size: 11px;
+        line-height: 1.7;
+      }
+
+      .content {
+        padding-top: 2mm;
+      }
+
+      .hero {
+        margin-bottom: 9mm;
+        padding-left: 1mm;
+      }
+
+      .hero h1 {
+        margin: 0;
+        color: var(--navy);
+        font-size: 26px;
+        font-weight: 900;
+        line-height: 0.96;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+      }
+
+      .hero p {
+        margin: 4mm 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .block {
+        margin-bottom: 6mm;
+      }
+
+      .entry {
+        margin-bottom: 5mm;
+      }
+
+      .entry:last-child {
+        margin-bottom: 0;
+      }
+
+      .entry h3 {
+        margin: 0;
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .entry .meta {
+        margin: 0.8mm 0 0;
+        color: var(--ink);
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .entry .period {
+        margin: 0.8mm 0 0;
+        color: var(--ink);
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .entry p {
+        margin: 1.4mm 0 0;
+        color: var(--muted);
+        font-size: 10.6px;
+        line-height: 1.55;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 7mm;
+      }
+
+      .skills {
+        display: grid;
+        gap: 3.8mm;
+      }
+
+      .skill-row {
+        display: grid;
+        grid-template-columns: 1fr 28mm 10mm;
+        gap: 2.5mm;
+        align-items: center;
+      }
+
+      .skill-label {
+        color: var(--ink);
+        font-size: 11px;
+      }
+
+      .skill-bar {
+        position: relative;
+        height: 2.6mm;
+        overflow: hidden;
+        border-radius: 999px;
+        background: #d5dbe3;
+      }
+
+      .skill-fill {
+        position: absolute;
+        inset: 0 auto 0 0;
+        border-radius: 999px;
+        background: var(--navy);
+      }
+
+      .skill-value {
+        color: var(--muted);
+        font-size: 11px;
+        text-align: right;
+      }
+
+      .spacer-strong {
+        margin-top: 8mm;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="corner-block"></div>
+      <div class="corner-circle"></div>
+      <div class="corner-circle-bottom"></div>
+      <div class="corner-circle-right"></div>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="avatar">AD</div>
+
+          <section class="block">
+            <h2 class="left-title">About Me</h2>
+            <p class="left-copy">
+              I build brand-forward digital experiences that feel sharp, fast, and human.
+              From product strategy to polished interfaces, I help founders and teams ship
+              work that looks expensive and performs like it means it.
+            </p>
+          </section>
+
+          <section class="block spacer-strong">
+            <div class="section-title">Contact</div>
+            <div class="contact-list">
+              <div class="contact-item">Phone: 09751876871</div>
+              <div class="contact-item">Phone: 09281453911</div>
+              <div class="contact-item">Email: aarondemol2004@gmail.com</div>
+              <div class="contact-item">Location: New York, United States</div>
+            </div>
+          </section>
+
+          <section class="block spacer-strong">
+            <div class="section-title">Core Tools</div>
+            <ul class="bullet-list">
+              <li>React</li>
+              <li>Firebase</li>
+              <li>Tailwind CSS</li>
+              <li>Framer Motion</li>
+            </ul>
+          </section>
+
+          <section class="block spacer-strong">
+            <div class="section-title">Expertise</div>
+            <ul class="bullet-list">
+              <li>Brand Systems</li>
+              <li>Product Design</li>
+              <li>Frontend Builds</li>
+              <li>Admin Dashboards</li>
+              <li>Content Management</li>
+            </ul>
+          </section>
+        </aside>
+
+        <main class="content">
+          <header class="hero">
+            <h1>Aaron<br />Demol</h1>
+            <p>Product Designer &amp; Frontend Engineer</p>
+          </header>
+
+          <section class="block">
+            <div class="section-title">Experience</div>
+
+            <article class="entry">
+              <h3>Lead Product Designer</h3>
+              <div class="meta">Northstar Studio - Remote</div>
+              <div class="period">2022 - Present</div>
+              <p>
+                Guided UI strategy, motion systems, and design execution for fintech and
+                developer tooling products.
+              </p>
+            </article>
+
+            <article class="entry">
+              <h3>Senior Frontend Engineer</h3>
+              <div class="meta">Blackline Labs - Brooklyn, NY</div>
+              <div class="period">2019 - 2022</div>
+              <p>
+                Built performant React interfaces, improved accessibility, and partnered
+                with product teams on launches.
+              </p>
+            </article>
+
+            <article class="entry">
+              <h3>Digital Designer</h3>
+              <div class="meta">Aster Creative - Boston, MA</div>
+              <div class="period">2016 - 2019</div>
+              <p>
+                Designed campaign sites, landing experiences, and reusable component
+                systems for startup clients.
+              </p>
+            </article>
+          </section>
+
+          <div class="two-col">
+            <section class="block">
+              <div class="section-title">Education</div>
+
+              <article class="entry">
+                <h3>BFA, Interactive Design</h3>
+                <div class="meta">Rhode Island School of Design</div>
+                <div class="period">2012 - 2016</div>
+                <p>
+                  Focused on digital product design, motion, and human-centered design
+                  systems.
+                </p>
+              </article>
+
+              <article class="entry">
+                <h3>Advanced Frontend Certification</h3>
+                <div class="meta">Frontend Masters</div>
+                <div class="period">2018</div>
+                <p>
+                  Completed advanced coursework in React architecture, accessibility,
+                  performance, and animation.
+                </p>
+              </article>
+            </section>
+
+            <section class="block">
+              <div class="section-title">Selected Projects</div>
+
+              <article class="entry">
+                <h3>Luxe Commerce Dashboard</h3>
+                <div class="meta">E-commerce Case Study</div>
+                <p>
+                  Revenue, inventory, customer analytics, and launch campaign tracking in
+                  one focused workspace.
+                </p>
+              </article>
+
+              <article class="entry">
+                <h3>Creator Portfolio CMS</h3>
+                <div class="meta">Live Build</div>
+                <p>
+                  Portfolio site with editable sections, protected admin controls, and
+                  Firebase-backed content management.
+                </p>
+              </article>
+            </section>
+          </div>
+
+          <section class="block">
+            <div class="section-title">Skills Summary</div>
+
+            <div class="skills">
+              <div class="skill-row">
+                <div class="skill-label">Design Systems</div>
+                <div class="skill-bar"><div class="skill-fill" style="width: 91%;"></div></div>
+                <div class="skill-value">91%</div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label">Frontend Builds</div>
+                <div class="skill-bar"><div class="skill-fill" style="width: 88%;"></div></div>
+                <div class="skill-value">88%</div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label">Product Strategy</div>
+                <div class="skill-bar"><div class="skill-fill" style="width: 84%;"></div></div>
+                <div class="skill-value">84%</div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label">Client Delivery</div>
+                <div class="skill-bar"><div class="skill-fill" style="width: 86%;"></div></div>
+                <div class="skill-value">86%</div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

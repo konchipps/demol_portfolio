@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120">
+  <rect width="320" height="120" rx="18" fill="#020617"/>
+  <path d="M118 24h84l-24 24h-36l-24-24Zm24 24h60l-24 24h-36V48Zm0 24h36l-18 18-18-18Zm0 0h-24l24 24V72Z" fill="#f8fafc"/>
+  <text x="160" y="102" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#e2e8f0" letter-spacing="0">Framer</text>
+</svg>
