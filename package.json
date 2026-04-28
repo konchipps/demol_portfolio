@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "setup:local": "powershell -ExecutionPolicy Bypass -File scripts/setup-local.ps1",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"

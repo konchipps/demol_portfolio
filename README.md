@@ -15,6 +15,38 @@ A dark, premium React portfolio built with Vite, Tailwind CSS, Framer Motion, Re
 
 ## Local setup
 
+### Fastest setup on another PC
+
+1. Install `Git` and `Node.js`.
+2. Clone the repo:
+
+```bash
+git clone https://github.com/CallmeAeron/demol_portfolio.git
+cd demol_portfolio
+```
+
+3. Run the bootstrap script:
+
+```powershell
+npm run setup:local
+```
+
+4. Start the app:
+
+```bash
+npm run dev
+```
+
+5. Open:
+
+```text
+http://127.0.0.1:5173
+```
+
+The Firebase web config for `portfolio-demol` is already prefilled in `.env.example`, so on a new PC you usually only need to copy it into `.env.local`. The admin password is not stored in the repo and still lives in Firebase Authentication.
+
+### Manual setup
+
 1. Install dependencies:
 
 ```bash
