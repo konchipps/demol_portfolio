@@ -10,8 +10,14 @@ import { db, storageUploadsEnabled } from "../firebase/config";
 import { useDocument } from "../hooks/useDocument";
 import { heroSeed } from "../utils/defaultContent";
 import { uploadImage } from "../utils/firebaseUploads";
+import {
+  getSocialIcon,
+  getSocialIconLabel,
+  normalizeSocialIconKey,
+  socialIconOptions
+} from "../utils/socialIcons";
 
-const blankLink = { label: "", url: "" };
+const blankLink = { label: "", url: "", icon: "" };
 const blankStat = { label: "", value: "" };
 
 const HeroManager = () => {
@@ -27,7 +33,10 @@ const HeroManager = () => {
       setForm({
         ...heroSeed,
         ...hero,
-        socialLinks: hero.socialLinks || heroSeed.socialLinks,
+        socialLinks: (hero.socialLinks || heroSeed.socialLinks).map((link) => ({
+          ...link,
+          icon: link.icon || normalizeSocialIconKey(link.label)
+        })),
         stats: hero.stats || heroSeed.stats,
         phoneNumbers: hero.phoneNumbers || heroSeed.phoneNumbers
       });
@@ -115,7 +124,12 @@ const HeroManager = () => {
         {
           ...rest,
           profileImageUrl,
-          socialLinks: socialLinks.filter((link) => link.label && link.url),
+          socialLinks: socialLinks
+            .filter((link) => link.label && link.url)
+            .map((link) => ({
+              ...link,
+              icon: link.icon || normalizeSocialIconKey(link.label)
+            })),
           stats: stats.filter((stat) => stat.label && stat.value),
           updatedAt: serverTimestamp()
         },
@@ -292,7 +306,7 @@ const HeroManager = () => {
               <div className="space-y-4">
                 {socialLinks.map((link, index) => (
                   <div key={`social-${index}`} className="rounded-lg border border-white/10 p-4">
-                    <div className="grid gap-4">
+                    <div className="grid gap-4 md:grid-cols-2">
                       <FormField
                         label="Label"
                         value={link.label}
@@ -300,6 +314,35 @@ const HeroManager = () => {
                           updateArrayField("socialLinks", index, "label", event.target.value)
                         }
                       />
+                      <FormField label="Icon">
+                        <div className="space-y-3">
+                          <select
+                            className="field-input"
+                            value={link.icon || ""}
+                            onChange={(event) =>
+                              updateArrayField("socialLinks", index, "icon", event.target.value)
+                            }
+                          >
+                            <option value="">Match label automatically</option>
+                            {socialIconOptions.map((option) => (
+                              <option key={option.value} value={option.value}>
+                                {option.label}
+                              </option>
+                            ))}
+                          </select>
+                          <div className="inline-flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">
+                            {(() => {
+                              const Icon = getSocialIcon(link.icon || link.label);
+                              return <Icon className="h-4 w-4 text-rose-300" />;
+                            })()}
+                            <span>
+                              {link.icon ? getSocialIconLabel(link.icon) : "Auto from label"}
+                            </span>
+                          </div>
+                        </div>
+                      </FormField>
+                    </div>
+                    <div className="mt-4 grid gap-4">
                       <FormField
                         label="URL"
                         value={link.url}

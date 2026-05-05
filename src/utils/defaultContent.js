@@ -10,9 +10,9 @@ export const heroSeed = {
   profileImageUrl:
     "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
   socialLinks: [
-    { label: "GitHub", url: "https://github.com/" },
-    { label: "LinkedIn", url: "https://linkedin.com/" },
-    { label: "Dribbble", url: "https://dribbble.com/" }
+    { label: "GitHub", icon: "github", url: "https://github.com/" },
+    { label: "LinkedIn", icon: "linkedin", url: "https://linkedin.com/" },
+    { label: "Dribbble", icon: "dribbble", url: "https://dribbble.com/" }
   ],
   stats: [
     { label: "Years Experience", value: "8+" },

@@ -1,26 +1,12 @@
 import {
-  ArrowUpRight,
   Award,
   BriefcaseBusiness,
-  Camera,
-  GitBranch,
-  Globe,
+  ArrowUpRight,
   MapPin,
-  Mail,
-  Send
+  Mail
 } from "lucide-react";
 import { motion } from "framer-motion";
-
-const socialIcons = {
-  GitHub: GitBranch,
-  LinkedIn: BriefcaseBusiness,
-  Instagram: Camera,
-  X: Send,
-  Twitter: Send,
-  Dribbble: ArrowUpRight,
-  Behance: ArrowUpRight,
-  Website: Globe
-};
+import { getSocialIcon } from "../utils/socialIcons";
 
 const HeroSection = ({ hero }) => {
   const socialLinks = hero?.socialLinks || [];
@@ -61,7 +47,7 @@ const HeroSection = ({ hero }) => {
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             {socialLinks.map((link) => {
-              const Icon = socialIcons[link.label] || ArrowUpRight;
+              const Icon = getSocialIcon(link.icon || link.label);
               return (
                 <a
                   key={`${link.label}-${link.url}`}
@@ -69,7 +55,7 @@ const HeroSection = ({ hero }) => {
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-slate-200 transition hover:border-rose-300/35 hover:bg-white/[0.06] hover:text-white"
-                  aria-label={link.label}
+                  aria-label={link.label || "Social link"}
                 >
                   <Icon className="h-5 w-5" />
                 </a>
